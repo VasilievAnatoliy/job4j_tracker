@@ -8,6 +8,7 @@ public class StartUl {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
         String createdDateTimeFormat = item.getCreated().format(formatter);
         System.out.println(createdDateTimeFormat);
-        System.out.println(item.getCurrentDateTimeFormat());
+        Item format = new Item();
+        System.out.println(format.toString());
     }
 }
