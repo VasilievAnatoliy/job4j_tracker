@@ -46,6 +46,11 @@ public class Item {
         return created;
     }
 
+    public String time() {
+        return created.format(FORMATTER);
+
+    }
+
     @Override
     public String toString() {
         return "Item{"
