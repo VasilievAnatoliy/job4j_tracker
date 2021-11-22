@@ -11,7 +11,7 @@ import static org.junit.Assert.assertThat;
 public class JobTest {
     @Test
     public void whenComparatorSortByName() {
-        Comparator<Job> sort = new JobSortByPriority();
+        Comparator<Job> sort = new JobSortByName();
         int rsl = sort.compare(
                 new Job("aaa", 0),
                 new Job("bbb", 1)
