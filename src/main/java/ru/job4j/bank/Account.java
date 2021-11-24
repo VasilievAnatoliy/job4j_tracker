@@ -2,10 +2,25 @@ package ru.job4j.bank;
 
 import java.util.Objects;
 
+/**
+ * Модель данных банковского счета
+ * @author VASILIEV ANATOLIY
+ * @version 1.0
+ */
 public class Account {
+
+    /**
+     * Поля модели даных содержат:
+     * реквизиты(номер счёта) и баланс.
+     */
     private String requisite;
     private double balance;
 
+    /**
+     * Конструктор класса ввод данных:
+     * @param requisite номер счёта
+     * @param balance баланс счёта
+     */
     public Account(String requisite, double balance) {
         this.requisite = requisite;
         this.balance = balance;
@@ -27,6 +42,11 @@ public class Account {
         this.balance = balance;
     }
 
+    /**
+     * Переопределяем номер счёта для возможности поиска по нему.
+     * @param o номер счёта.
+     * @return возвращает true если сравнение прошло успешно.
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) {
