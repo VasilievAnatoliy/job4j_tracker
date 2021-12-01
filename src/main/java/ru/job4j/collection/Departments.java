@@ -8,25 +8,21 @@ public class Departments {
         for (String value : deps) {
             String start = "";
             for (String el : value.split("/")) {
-                if (start == "") {
-                    start = el;
-                } else {
-                    start += "/" + el;
-                }
+                start += "".equals(start) ? el : "/" + el;
                 tmp.add(start);
             }
         }
         return new ArrayList<>(tmp);
     }
 
-    public static List<String> sortAsc(List<String> orgs) {
+    public static void sortAsc(List<String> orgs) {
         orgs.sort(Comparator.naturalOrder());
-        return orgs;
+
     }
 
-    public static List<String> sortDesc(List<String> orgs) {
-        DepDescComp depDescComp = new DepDescComp();
-        orgs.sort(depDescComp);
-        return orgs;
+    public static void sortDesc(List<String> orgs) {
+        orgs.sort(new DepDescComp());
     }
 }
+
+

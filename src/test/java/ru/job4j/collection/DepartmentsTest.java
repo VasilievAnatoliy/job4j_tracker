@@ -26,20 +26,18 @@ public class DepartmentsTest {
     }
 
     @Test
-    public void whenSortAsc() {
-        List<String> input = Arrays.asList("K1/SK1/SSK1", "K2/SK1/SSK2", "K1/SK1/SSK2", "K1/SK2");
-        List<String> expect = Arrays.asList("K1", "K1/SK1", "K1/SK1/SSK1",
-                "K1/SK1/SSK2", "K1/SK2", "K2", "K2/SK1", "K2/SK1/SSK2");
-        List<String> result = Departments.sortAsc(Departments.fillGaps(input));
+    public void whenMissedK2() {
+        List<String> input = Arrays.asList("k2/sk1");
+        List<String> expect = Arrays.asList("k2", "k2/sk1");
+        List<String> result = Departments.fillGaps(input);
         assertThat(result, is(expect));
     }
 
     @Test
-    public void whenSortDesc() {
-        List<String> input = Arrays.asList("K1/SK1/SSK1", "K2/SK1/SSK2", "K1/SK1/SSK2", "K1/SK2");
-        List<String> expect = Arrays.asList("K2", "K2/SK1", "K2/SK1/SSK2", "K1", "K1/SK1",
-                "K1/SK1/SSK1", "K1/SK1/SSK2", "K1/SK2");
-        List<String> result = Departments.sortDesc(Departments.fillGaps(input));
+    public void whenMissedK2AndK2SK1() {
+        List<String> input = Arrays.asList("k2/sk1/ssk2");
+        List<String> expect = Arrays.asList("k2", "k2/sk1", "k2/sk1/ssk2");
+        List<String> result = Departments.fillGaps(input);
         assertThat(result, is(expect));
     }
 }
