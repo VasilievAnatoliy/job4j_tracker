@@ -15,6 +15,7 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
+    private String description;
     private LocalDateTime created = LocalDateTime.now();
 
     public Item() {
@@ -33,6 +34,12 @@ public class Item {
         this.id = id;
         this.name = name;
         this.created = created;
+    }
+
+    public Item(String name, String description) {
+        this.name = name;
+        this.description = description;
+
     }
 
     public int getId() {
@@ -59,6 +66,14 @@ public class Item {
         return created;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
         return String.format("id: %s, name: %s, created: %s", id, name, FORMATTER.format(created));
@@ -75,11 +90,12 @@ public class Item {
         Item item = (Item) o;
         return getId() == item.getId()
                 && Objects.equals(getName(), item.getName())
+                && Objects.equals(description, item.description)
                 && Objects.equals(getCreated().withNano(0), item.getCreated().withNano(0));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getCreated());
+        return Objects.hash(getId(), getName(), description, getCreated());
     }
 }
